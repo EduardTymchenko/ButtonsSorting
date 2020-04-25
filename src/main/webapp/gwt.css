@@ -1,0 +1,91 @@
+body{
+  margin: 0 ;
+}
+
+.gwt-DialogBox .Caption {
+  color: red;
+}
+
+.gwt-Button{
+  display: block;
+  margin: 10px auto;
+  background: #4472C4;
+  font-size: 16px;
+  color: white;
+  width:100px;
+}
+
+.gwt-TextBox{
+  text-align: center;
+  font-size: 16px;
+  margin: 15px 0;
+  width: 100px;
+}
+
+#mainContent{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+
+.introContainer{
+  display: inline-block;
+  text-align: center;
+  font-size: 18px;
+}
+
+.questionLabel{
+  text-align: center;
+}
+
+
+.errorLabel{
+  color: red;
+  height: 25px;
+}
+
+/*Sort*/
+.sortContainer{
+  display: flex;
+  min-width: 60%;
+
+}
+.numbersBlockContainer{
+  display: flex;
+  align-items: flex-start;
+}
+.numberBlock{
+  display: inline-block;
+  vertical-align: top;
+  padding: 0 10px;
+}
+
+.buttonBlock{
+  margin-left: auto ;
+}
+
+.btnSort{
+  background: #00B050 ;
+}
+
+.sortArray{
+  background: #097d63;
+}
+
+.paviot{
+  background: #774f70;
+}
+.swap{
+  color: crimson;
+  font-weight: bold;
+}
+.pointer{
+  border: 2px solid #976d01;
+}
+
+.speedSort{
+  margin: 10px auto;
+  width: 100px;
+}
