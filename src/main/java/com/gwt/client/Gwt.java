@@ -114,6 +114,7 @@ public class Gwt implements EntryPoint {
 
         private Widget buildNumbersBlock(int numbersOfDisplay) {
             List<Integer> listRandomNumbers = generateArrayInt(numbersOfDisplay, 1, 1000);
+            numberButtonsList.clear();
             FlowPanel numbersBlockContainer = new FlowPanel();
             numbersBlockContainer.addStyleName("numbersBlockContainer");
             FlowPanel numberBlockGroup = null;
@@ -137,7 +138,8 @@ public class Gwt implements EntryPoint {
                         int popupPanelY = clickEvent.getClientY() - popupPanel.getElement().getAbsoluteBottom();
                         popupPanel.setPopupPosition(popupPanelX, popupPanelY);
                     } else {
-                        updateNumberButtonsAll(generateArrayInt(numberButtonsList.size(), 1, 1000));
+                        sortContainer.remove(0);
+                        sortContainer.insert(buildNumbersBlock(numberClick),0);
                     }
                 });
                 numberButtonsList.add(numberBtn);
