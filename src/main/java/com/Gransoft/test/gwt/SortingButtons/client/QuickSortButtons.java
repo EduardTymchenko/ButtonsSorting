@@ -1,4 +1,4 @@
-package com.gwt.client;
+package com.Gransoft.test.gwt.SortingButtons.client;
 
 import com.google.gwt.event.dom.client.KeyCodes;
 import com.google.gwt.user.client.Timer;
@@ -13,7 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
-public class Gwt implements EntryPoint {
+public class QuickSortButtons implements EntryPoint {
     private static Logger logger = Logger.getLogger("");
 
     public void onModuleLoad() {
@@ -64,7 +64,7 @@ public class Gwt implements EntryPoint {
                 errorLabel.setText("");
                 String inputNumbers = numberField.getText();
                 if (isValidNumber(inputNumbers, 1, 1000)) {
-                    Gwt.this.showWindow(new Sort(Integer.parseInt(inputNumbers)));
+                    QuickSortButtons.this.showWindow(new Sort(Integer.parseInt(inputNumbers)));
                 } else {
                     errorLabel.setText("Please enter number from 1 to 1000 [1,1000]");
                     numberField.setFocus(true);
@@ -168,7 +168,7 @@ public class Gwt implements EntryPoint {
             resetButton.addClickHandler(clickEvent -> {
                 logger.log(Level.SEVERE, "Click button \"Reset\"");
                 Intro intro = new Intro();
-                Gwt.this.showWindow(intro);
+                QuickSortButtons.this.showWindow(intro);
                 intro.setFocusNumberField();
             });
             buttonBlockContainer.add(speedSortBuildBlock());

@@ -10,7 +10,7 @@
   
   <!-- Default page to serve -->
   <welcome-file-list>
-    <welcome-file>Gwt.html</welcome-file>
+    <welcome-file>buttonsSorting.html</welcome-file>
   </welcome-file-list>
 
 </web-app>

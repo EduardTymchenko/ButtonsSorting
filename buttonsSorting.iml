@@ -21,6 +21,8 @@
         <setting name="gwtSdkType" value="maven" />
         <setting name="webFacet" value="Web" />
         <packaging>
+          <module name="com.Gransoft.gwtJUnit" enabled="false" />
+          <module name="com.Gransoft.test.gwt.SortingButtons.gwtJUnit" enabled="false" />
           <module name="com.gwt.gwtJUnit" enabled="false" />
           <module name="com.gwtJUnit" enabled="false" />
         </packaging>

@@ -23,9 +23,9 @@
   <set-property name = "gwt.logging.logLevel" value = "SEVERE"/>
   <set-property name = "gwt.logging.enabled" value = "TRUE"/>
 
-  <stylesheet src='/gwt.css' />
+  <stylesheet src='/buttonsSorting.css' />
   <!-- Specify the app entry point class.                         -->
-  <entry-point class='com.gwt.client.Gwt'/>
+  <entry-point class='com.Gransoft.test.gwt.SortingButtons.client.QuickSortButtons'/>
 
   <!-- Specify the paths for translatable code                    -->
   <source path='client'/>
