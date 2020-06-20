@@ -13,21 +13,34 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
+/**
+ * QuickSortButtons - main class application.
+ * This is Single Page Application
+ */
 public class QuickSortButtons implements EntryPoint {
     private static Logger logger = Logger.getLogger("");
 
+    /**
+     * Entry point in GWT application
+     */
     public void onModuleLoad() {
         Intro intro = new Intro();
         RootPanel.get("mainContent").add(new Intro());
         intro.setFocusNumberField();
     }
 
+    /**
+     * The method removes all components from the root container and set the components of a new page
+     * @param showWindow  new page
+     */
     private void showWindow(Composite showWindow) {
         RootPanel.get("mainContent").remove(0);
         RootPanel.get("mainContent").add(showWindow);
     }
 
-    // Intro Window
+    /**
+     * Class Intro page
+     */
     public class Intro extends Composite {
         private final FlowPanel introContainer = new FlowPanel();
         private final Label questionLabel = new Label();
@@ -38,7 +51,9 @@ public class QuickSortButtons implements EntryPoint {
         public Intro() {
             buildIntroWindow();
         }
-
+        /**
+         * Intro page Elements Rendering Method
+         */
         private void buildIntroWindow() {
             introContainer.addStyleName("introContainer");
             questionLabel.setText("How many numbers to display?");
@@ -59,7 +74,9 @@ public class QuickSortButtons implements EntryPoint {
                 }
             });
         }
-
+        /**
+         * go to Sort page
+         */
         private void goScreenSort(){
                 errorLabel.setText("");
                 String inputNumbers = numberField.getText();
@@ -71,7 +88,13 @@ public class QuickSortButtons implements EntryPoint {
                     numberField.selectAll();
                 }
         }
-
+        /**
+         * Number range validation method
+         * @param inputNumber input parameter String
+         * @param minNumber minimum value
+         * @param maxNumber maximum value
+         * @return boolean
+         */
         private boolean isValidNumber(String inputNumber, int minNumber, int maxNumber) {
             logger.log(Level.SEVERE, "Enter numbers of display: " + inputNumber);
             try {
@@ -88,13 +111,21 @@ public class QuickSortButtons implements EntryPoint {
         }
     }
 
-    //Sort window
+    /**
+     * Class Sort page
+     */
     public class Sort extends Composite {
-        private final int showTimeDefault = 500;  // Time show step Quick Sort, mc
+        /**
+         * Time show step Quick Sort, mc. Default 500 mc.
+         */
+        private final int showTimeDefault = 500;
+        /**
+         * List of number buttons for sorting shows
+         */
+        private List<Button> numberButtonsList = new ArrayList<>();
         private FlowPanel sortContainer = new FlowPanel();
         private final Button sortButton = new Button("Sort");
         private final Button resetButton = new Button("Reset");
-        private List<Button> numberButtonsList = new ArrayList<>();
         private final TextBox speedField = new TextBox();
 
         private Random random = new Random();
@@ -104,7 +135,9 @@ public class QuickSortButtons implements EntryPoint {
         public Sort(int numbersOfDisplay) {
             buildSortWindow(numbersOfDisplay);
         }
-
+        /**
+         * Sort page Elements Rendering Method
+         */
         private void buildSortWindow(int numbersOfDisplay) {
             sortContainer.addStyleName("sortContainer");
             sortContainer.add(buildNumbersBlock(numbersOfDisplay));
@@ -112,6 +145,11 @@ public class QuickSortButtons implements EntryPoint {
             initWidget(sortContainer);
         }
 
+        /**
+         * Block number buttons render of Sort page
+         * @param numbersOfDisplay number of buttons
+         * @return  Widget
+         */
         private Widget buildNumbersBlock(int numbersOfDisplay) {
             List<Integer> listRandomNumbers = generateArrayInt(numbersOfDisplay, 1, 1000);
             numberButtonsList.clear();
@@ -148,6 +186,10 @@ public class QuickSortButtons implements EntryPoint {
             return numbersBlockContainer;
         }
 
+        /**
+         *  Block control buttons render of Sort page
+         * @return  Widget
+         */
         private Widget buildButtonBlock() {
             FlowPanel buttonBlockContainer = new FlowPanel();
             buttonBlockContainer.addStyleName("buttonBlock");
@@ -175,6 +217,10 @@ public class QuickSortButtons implements EntryPoint {
             return buttonBlockContainer;
         }
 
+        /**
+         * Block control speed show sorting of Sort page
+         * @return Widget
+         */
         private Widget speedSortBuildBlock() {
             FlowPanel blockSpeedSort = new FlowPanel();
             Label labelSpeedField = new Label("Enter speed show sort [1,30] int \n (default 0.5 s):");
@@ -186,6 +232,11 @@ public class QuickSortButtons implements EntryPoint {
             return blockSpeedSort;
         }
 
+        /**
+         * Sorting steps visualization
+         * @param listStepsSort list steps sorting
+         * @param timeShow time show one step, mc (integer)
+         */
         private void visualSort(List<StepSort> listStepsSort, int timeShow) {
             Timer stepTimer = new Timer() {
                 private int step = 1;
@@ -207,6 +258,11 @@ public class QuickSortButtons implements EntryPoint {
             stepTimer.scheduleRepeating(timeShow);
         }
 
+        /**
+         * Set style of array sorting by number step
+         * @param listSteps list steps sorting
+         * @param stepShow number step
+         */
         private void setStyleShowSort(List<StepSort> listSteps, int stepShow) {
             StepSort stepObj = listSteps.get(stepShow);
             for (int k = stepObj.low; k <= stepObj.high; k++) {
@@ -222,6 +278,11 @@ public class QuickSortButtons implements EntryPoint {
             }
         }
 
+        /**
+         * Reset style of array sorting by number step
+         * @param listSteps list steps sorting
+         * @param stepShow number step
+         */
         private void resetStyleShowSort(List<StepSort> listSteps, int stepShow) {
             StepSort stepObj = listSteps.get(stepShow);
             for (int k = stepObj.low; k <= stepObj.high; k++) {
@@ -234,6 +295,10 @@ public class QuickSortButtons implements EntryPoint {
             numberButtonsList.get(stepObj.indexPaviot).removeStyleName("paviot");
         }
 
+        /**
+         * Set time show step
+         * @return time, mc
+         */
         public int generateTimeShow() {
             try {
                 int speedForm = Integer.parseInt(speedField.getText());
@@ -243,10 +308,16 @@ public class QuickSortButtons implements EntryPoint {
             }
             return showTimeDefault;
         }
-
+        /**
+         * Generate random numbers in a given range.
+         * Check list numbers, at least one value should be equal or less than 30.
+         * @param length number of array elements
+         * @param rangeMin  minimum value
+         * @param rangeMax maximum value
+         * @return list integer numbers
+         */
         private List<Integer> generateArrayInt(int length, int rangeMin, int rangeMax) {
             logger.log(Level.SEVERE, "Generate integer array length: " + length + ", range [" + rangeMin + "," + rangeMax + "]");
-            //At least one value should be equal or less than 30
             boolean isOkArray = false;
             List<Integer> arrayInt = new ArrayList<>();
             while (!isOkArray) {
@@ -272,7 +343,9 @@ public class QuickSortButtons implements EntryPoint {
             resetButton.setEnabled(!isBlock);
             isSortingShow = isBlock;
         }
-
+        /**
+         * Class for storing complete information about the sorting step
+         */
         private class StepSort {
             private int i;
             private int j;
@@ -307,18 +380,36 @@ public class QuickSortButtons implements EntryPoint {
                         ", indexPaviot=" + indexPaviot + ", isSwap=" + isSwap + "}" + "\n";
             }
         }
-
+        /**
+         * Method creates a list of sorting steps for visualization.
+         * @param listInteger input array to sort
+         * @param numberAlgorithmForPaviot number of strategy select pivot element
+         * @param isIncreasing order sort (true - Increasing, false - decrease)
+         * @return list sorting steps
+         */
         private List<StepSort> getListStepsSort(List<Integer> listInteger, int numberAlgorithmForPaviot, boolean isIncreasing) {
+
             class QuickSort {
                 private List<StepSort> listStepsSort = new ArrayList<>();
-
+                /**
+                 * Quick Sort Algorithm implemented by recursion method
+                 * @param integerList input array to sort
+                 * @param low start index for sorting array elements
+                 * @param high last index for sorting array elements
+                 * @param numberAlgorithmForPaviot number of strategy select pivot
+                 * @param isIncreasing order sort, (true - Increasing, false - decrease)
+                 */
                 private void sortIntArray(List<Integer> integerList, int low, int high, int numberAlgorithmForPaviot, boolean isIncreasing) {
                     if (integerList.isEmpty() || low >= high)
                         return;
-                    // select pivot element
+                    /**
+                     * select pivot element
+                     */
                     int indexPaviot = indexPivot(low, high, numberAlgorithmForPaviot);
                     int pivot = integerList.get(indexPaviot);
-                    // split into subarrays that are larger and smaller than the Paviot element
+                    /**
+                     * split into subarrays that are larger and smaller than the Paviot element
+                     */
                     int i = low;
                     int j = high;
                     listStepsSort.add(new StepSort(low, high, i, j, indexPaviot, integerList));
@@ -334,19 +425,25 @@ public class QuickSortButtons implements EntryPoint {
                             listStepsSort.add(new StepSort(low, high, i, j, indexPaviot, integerList));
                         }
                         if (i < j) {
-                            // swap for Paviot==low
+                            /**
+                             * swap for Pivot==low
+                             */
                             if (i == indexPaviot) {
                                 integerList.add(i, integerList.get(j));
                                 integerList.remove(j + 1);
                                 listStepsSort.add(new StepSort(low, high, i, j, indexPaviot, true, integerList));
                                 indexPaviot = ++i;
-                                // swap for Paviot==high
+                                /**
+                                 * swap for Pivot==high
+                                 */
                             } else if (j == indexPaviot) {
                                 integerList.add(j + 1, integerList.get(i));
                                 integerList.remove(i);
                                 listStepsSort.add(new StepSort(low, high, i, j, indexPaviot, true, integerList));
                                 indexPaviot = --j;
-                                // swap for Paviot in the middle
+                                /**
+                                 * swap for Pivot in the middle
+                                 */
                             } else {
                                 Collections.swap(integerList, i, j);
                                 logger.log(Level.SEVERE, "Step sort: " + integerList + " i=" + i + " j=" + j + " swap");
@@ -359,22 +456,31 @@ public class QuickSortButtons implements EntryPoint {
                         } else {
                             i++;
                         }
-                        // for Paviot==high if sorted
+                        /**
+                         * or Pivot==high if sorted
+                         */
                         if (j == indexPaviot && j == high) j--;
                     }
-                    // recursion call to sort left and right
+                    /**
+                     * recursion call to sort left and right arrays
+                     */
                     if (low < j) //left
                         sortIntArray(integerList, low, j, numberAlgorithmForPaviot, isIncreasing);
                     if (high > i) //right
                         sortIntArray(integerList, i, high, numberAlgorithmForPaviot, isIncreasing);
                 }
 
-                /* select index pivot element
-                 numberAlgorithm = 1 - Paviot = low
-                 numberAlgorithm = 2 - Paviot = high
-                 numberAlgorithm = 3 - Paviot = random
-                 numberAlgorithm = any - Paviot = middle, it is default  */
-
+                /**
+                 * Select index pivot element
+                 * @param low start index for sorting array elements
+                 * @param high last index for sorting array elements
+                 * @param numberAlgorithm number of strategy select pivot:
+                 * 1 - Pivot = low;
+                 * 2 - Pivot = high;
+                 * 3 - Pivot = random;
+                 * any - Pivot = middle, it is default.
+                 * @return index Pivot
+                 */
                 private int indexPivot(int low, int high, int numberAlgorithm) {
                     switch (numberAlgorithm) {
                         case 1:

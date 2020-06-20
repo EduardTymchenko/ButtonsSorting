@@ -6,7 +6,7 @@ At first screen enter numbers (X) and application generate X numbers at range fr
 
 At second screen show this arrays.
 
-If click **Select** button array sorted step by step with 1 second speed.
+If click **Select** button array sorted step by step with 0.5 second speed.
 Clicking the sort button again, will change it to increasing order.
 
 If you click **Reset** button, you will return to the right screen.
