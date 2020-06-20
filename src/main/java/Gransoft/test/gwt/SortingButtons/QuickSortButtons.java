@@ -1,4 +1,4 @@
-package com.Gransoft.test.gwt.SortingButtons.client;
+package Gransoft.test.gwt.SortingButtons;
 
 import com.google.gwt.event.dom.client.KeyCodes;
 import com.google.gwt.user.client.Timer;
@@ -14,8 +14,8 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 /**
- * QuickSortButtons - main class application.
- * This is Single Page Application
+ * The QuickSortButtons class renders an algorithm for quickly sorting an array of size X that the user enters.
+ * This is Single Page Application.
  */
 public class QuickSortButtons implements EntryPoint {
     private static Logger logger = Logger.getLogger("");
@@ -30,8 +30,8 @@ public class QuickSortButtons implements EntryPoint {
     }
 
     /**
-     * The method removes all components from the root container and set the components of a new page
-     * @param showWindow  new page
+     * A method that removes all components from the root container and installs the components of the submitted page.
+     * @param showWindow  submitted page
      */
     private void showWindow(Composite showWindow) {
         RootPanel.get("mainContent").remove(0);
@@ -75,7 +75,8 @@ public class QuickSortButtons implements EntryPoint {
             });
         }
         /**
-         * go to Sort page
+         * The method that loads the sorting page when the length of the array is entered correctly
+         * or generates an input error message.
          */
         private void goScreenSort(){
                 errorLabel.setText("");
@@ -89,7 +90,7 @@ public class QuickSortButtons implements EntryPoint {
                 }
         }
         /**
-         * Number range validation method
+         * Array Length Check Method
          * @param inputNumber input parameter String
          * @param minNumber minimum value
          * @param maxNumber maximum value
@@ -144,9 +145,8 @@ public class QuickSortButtons implements EntryPoint {
             sortContainer.add(buildButtonBlock());
             initWidget(sortContainer);
         }
-
         /**
-         * Block number buttons render of Sort page
+         * Method that creates a panel of numbered buttons for visualization on the sorting page
          * @param numbersOfDisplay number of buttons
          * @return  Widget
          */
@@ -187,7 +187,7 @@ public class QuickSortButtons implements EntryPoint {
         }
 
         /**
-         *  Block control buttons render of Sort page
+         *  Method that creates a panel of control buttons for visualization on the sort page.
          * @return  Widget
          */
         private Widget buildButtonBlock() {
@@ -218,7 +218,7 @@ public class QuickSortButtons implements EntryPoint {
         }
 
         /**
-         * Block control speed show sorting of Sort page
+         * Method that creates a sort animation speed input panel for rendering on a sort page.
          * @return Widget
          */
         private Widget speedSortBuildBlock() {
@@ -233,7 +233,7 @@ public class QuickSortButtons implements EntryPoint {
         }
 
         /**
-         * Sorting steps visualization
+         * Method that visualizes sorting steps by changing the styles of numbered buttons.
          * @param listStepsSort list steps sorting
          * @param timeShow time show one step, mc (integer)
          */
@@ -259,7 +259,7 @@ public class QuickSortButtons implements EntryPoint {
         }
 
         /**
-         * Set style of array sorting by number step
+         * Method that sets styles for the current sorting step.
          * @param listSteps list steps sorting
          * @param stepShow number step
          */
@@ -279,7 +279,7 @@ public class QuickSortButtons implements EntryPoint {
         }
 
         /**
-         * Reset style of array sorting by number step
+         * Method that resets styles to the default value for the current sorting step
          * @param listSteps list steps sorting
          * @param stepShow number step
          */
@@ -296,7 +296,7 @@ public class QuickSortButtons implements EntryPoint {
         }
 
         /**
-         * Set time show step
+         * Method that sets the time to render a sorting step.
          * @return time, mc
          */
         public int generateTimeShow() {
@@ -309,7 +309,7 @@ public class QuickSortButtons implements EntryPoint {
             return showTimeDefault;
         }
         /**
-         * Generate random numbers in a given range.
+         * Method that generates random values for array elements from a given range.
          * Check list numbers, at least one value should be equal or less than 30.
          * @param length number of array elements
          * @param rangeMin  minimum value
@@ -392,7 +392,7 @@ public class QuickSortButtons implements EntryPoint {
             class QuickSort {
                 private List<StepSort> listStepsSort = new ArrayList<>();
                 /**
-                 * Quick Sort Algorithm implemented by recursion method
+                 * Method that executes a quick sort algorithm using recursion
                  * @param integerList input array to sort
                  * @param low start index for sorting array elements
                  * @param high last index for sorting array elements
@@ -408,7 +408,7 @@ public class QuickSortButtons implements EntryPoint {
                     int indexPaviot = indexPivot(low, high, numberAlgorithmForPaviot);
                     int pivot = integerList.get(indexPaviot);
                     /**
-                     * split into subarrays that are larger and smaller than the Paviot element
+                     * split into subarrays that are larger and smaller than the Pivot element
                      */
                     int i = low;
                     int j = high;
@@ -471,7 +471,7 @@ public class QuickSortButtons implements EntryPoint {
                 }
 
                 /**
-                 * Select index pivot element
+                 * Method that allows you to choose a strategy for determining Pivot
                  * @param low start index for sorting array elements
                  * @param high last index for sorting array elements
                  * @param numberAlgorithm number of strategy select pivot:

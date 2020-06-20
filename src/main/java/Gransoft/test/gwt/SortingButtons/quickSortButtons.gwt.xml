@@ -25,11 +25,12 @@
 
   <stylesheet src='/buttonsSorting.css' />
   <!-- Specify the app entry point class.                         -->
-  <entry-point class='com.Gransoft.test.gwt.SortingButtons.client.QuickSortButtons'/>
+  <entry-point class='Gransoft.test.gwt.SortingButtons.QuickSortButtons'/>
 
   <!-- Specify the paths for translatable code                    -->
-  <source path='client'/>
-<!--  <source path='shared'/>-->
+<!--  <source path="client"/>-->
+  <source path=""/>
+  <!--  <source path='shared'/>-->
 
   <!-- allow Super Dev Mode -->
   <add-linker name="xsiframe"/>

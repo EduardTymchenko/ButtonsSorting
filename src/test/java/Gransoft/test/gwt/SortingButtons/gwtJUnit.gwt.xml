@@ -7,7 +7,7 @@
   "http://gwtproject.org/doctype/2.8.2/gwt-module.dtd">
 <module rename-to='gwt'>
   <!-- Inherit our applications main module.                      -->
-  <inherits name='com.Gransoft.test.gwt.SortingButtons.quickSortButtons'/>
+  <inherits name='Gransoft.test.gwt.SortingButtons.quickSortButtons'/>
 
   <!-- Specify the path to any remote services.                   -->
 <!--  <servlet path="/gwt/sort" class="com.gwt.server.SortServiceImpl" />-->

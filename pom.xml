@@ -8,7 +8,7 @@
   <artifactId>gwt</artifactId>
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>com.Gransoft.test.gwt.SortingButtons</name>
+  <name>Gransoft.test.gwt.SortingButtons</name>
 
   <properties>
 
@@ -81,7 +81,7 @@
           </execution>
         </executions>
         <configuration>
-          <moduleName>com.Gransoft.test.gwt.SortingButtons.quickSortButtons</moduleName>
+          <moduleName>Gransoft.test.gwt.SortingButtons.quickSortButtons</moduleName>
           <moduleShortName>gwt</moduleShortName>
           <failOnError>true</failOnError>
           <!-- GWT compiler 2.8 requires 1.8, hence define sourceLevel here if you use

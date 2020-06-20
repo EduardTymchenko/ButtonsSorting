@@ -1,4 +1,4 @@
-package com.Gransoft.test.gwt.SortingButtons.client;
+package Gransoft.test.gwt.SortingButtons;
 
 import com.google.gwt.junit.client.GWTTestCase;
 
@@ -11,7 +11,7 @@ public class mainClientTest extends GWTTestCase {
      * Must refer to a valid module that sources this class.
      */
     public String getModuleName() {
-        return "com.Gransoft.test.gwt.SortingButtons.gwtJUnit";
+        return "Gransoft.test.gwt.SortingButtons.gwtJUnit";
     }
 
     /**

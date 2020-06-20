@@ -1,6 +1,5 @@
-package com.Gransoft.test.gwt.SortingButtons;
+package Gransoft.test.gwt.SortingButtons;
 
-import com.Gransoft.test.gwt.SortingButtons.client.mainClientTest;
 import com.google.gwt.junit.tools.GWTTestSuite;
 import junit.framework.Test;
 import junit.framework.TestSuite;
