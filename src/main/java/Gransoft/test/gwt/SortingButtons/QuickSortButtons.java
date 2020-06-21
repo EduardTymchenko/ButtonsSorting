@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 /**
- * The QuickSortButtons class renders an algorithm for quickly sorting an array of size X that the user enters.
+ * The QuickSortButtons class renders an algorithm for quickly sorting an array of size X according to user input.
  * This is Single Page Application.
  */
 public class QuickSortButtons implements EntryPoint {
@@ -310,7 +310,7 @@ public class QuickSortButtons implements EntryPoint {
         }
         /**
          * Method that generates random values for array elements from a given range.
-         * Check list numbers, at least one value should be equal or less than 30.
+         * Check input value, at least one value should be equal or less than 30.
          * @param length number of array elements
          * @param rangeMin  minimum value
          * @param rangeMax maximum value
